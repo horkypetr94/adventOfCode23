@@ -1,4 +1,5 @@
 import re
+
 data = []
 total_count = 0
 
@@ -15,22 +16,18 @@ for i,line in enumerate(lines):
 
 print(f'result1: {total_count}')
 
-
-with open("data/1") as f:
-    lines = f.readlines()
-
 total_count = 0
-
 pattern = re.compile(r'(one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9)')
 reverse_pattern = re.compile(r'(eno|owt|eerht|ruof|evif|xis|neves|thgie|enin|1|2|3|4|5|6|7|8|9)')
 
 for i, line in enumerate(lines):
     reversed_line = line[::-1]
     reversed_match = reverse_pattern.findall(reversed_line)[0]
-    last_word = reversed_match[::-1]
+    last = reversed_match[::-1]
 
-    match = pattern.findall(line)
-    number = match[0]+last_word
+    first = pattern.findall(line)[0]
+
+    number = first+last
     number = number.replace("one", "1")
     number = number.replace("two", "2")
     number = number.replace("three", "3")
